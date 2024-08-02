@@ -32,7 +32,7 @@ public class Product implements Serializable {
 
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, referencedColumnName = "id", name = "fk_category_id")
     @ToString.Exclude
     private Category category;
