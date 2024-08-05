@@ -25,8 +25,8 @@ import java.util.stream.Collectors;
 @Slf4j
 @Configuration
 @RequiredArgsConstructor
-@EnableJpaRepositories(basePackages = {"org.example.*"})
-public class MultiTenantConfiguration {
+@EnableJpaRepositories(basePackages = {"org.example.*.repository"})
+public class PersistenceConfiguration {
 
     @Value("${tenant.default}")
     private String defaultTenant;

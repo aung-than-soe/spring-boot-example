@@ -11,6 +11,7 @@
 
     <modules>
         <module>separate-database</module>
+        <module>separate-schema</module>
     </modules>
 
     <parent>
