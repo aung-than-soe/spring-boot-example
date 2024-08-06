@@ -12,6 +12,7 @@
     <modules>
         <module>separate-database</module>
         <module>separate-schema</module>
+        <module>shared-schema</module>
     </modules>
 
     <parent>
