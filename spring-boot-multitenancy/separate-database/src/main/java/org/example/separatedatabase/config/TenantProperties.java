@@ -13,12 +13,12 @@ import java.util.Map;
 @ConfigurationProperties(prefix = "datasource")
 public class TenantProperties {
 
-    private Map<String, Datasource> tenants;
+    private Map<String, CustomDatasourceProperties> tenants;
 
     @Getter
     @Setter
     @ToString
-    public static class Datasource {
+    public static class CustomDatasourceProperties {
         private String url;
         private String username;
         private String password;
