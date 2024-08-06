@@ -13,7 +13,7 @@ import java.sql.SQLException;
 @Slf4j
 @RequiredArgsConstructor
 @Configuration
-public class MultiTenantConnectionProviderImpl implements MultiTenantConnectionProvider<String> {
+public class TenantConnectionProvider implements MultiTenantConnectionProvider<String> {
 
     private final DataSource dataSource;
 
@@ -38,7 +38,7 @@ public class MultiTenantConnectionProviderImpl implements MultiTenantConnectionP
     @Override
     public void releaseConnection(String tenantIdentifier, Connection connection) throws SQLException {
         log.info("Release connection for tenant {}", tenantIdentifier);
-        connection.setSchema(TenantContext.DEFAULT_TENANT);
+        connection.setSchema(tenantIdentifier);
         releaseAnyConnection(connection);
     }
 
@@ -64,4 +64,32 @@ public class MultiTenantConnectionProviderImpl implements MultiTenantConnectionP
             throw new RuntimeException(e);
         }
     }
+
+//    public void addSchema(List<String> names) {
+//        try {
+//            Connection connection = this.getConnection(TenantContext.DEFAULT_TENANT);
+//            StringBuilder builder = new StringBuilder();
+//            for (String name : names) {
+//                builder.append(String.format("CREATE SCHEMA IF NOT EXISTS %s;", name));
+//                String scripts = this.loadScripts();
+//                builder.append(String.format(scripts, name, name, name));
+//            }
+//            connection.createStatement()
+//                    .execute(builder.toString());
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+
+//    private String loadScripts() throws IOException {
+//        ClassPathResource resource = new ClassPathResource("tables.sql");
+//        StringBuilder fileContents = new StringBuilder();
+//        try (BufferedReader reader = new BufferedReader(new InputStreamReader(resource.getInputStream()))) {
+//            String line;
+//            while ((line = reader.readLine()) != null) {
+//                fileContents.append(line).append("\n");
+//            }
+//        }
+//        return fileContents.toString();
+//    }
 }

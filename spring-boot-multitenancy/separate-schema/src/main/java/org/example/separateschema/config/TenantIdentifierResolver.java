@@ -4,7 +4,7 @@ import org.hibernate.context.spi.CurrentTenantIdentifierResolver;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class CurrentTenantIdentifierResolverImpl implements CurrentTenantIdentifierResolver<String> {
+public class TenantIdentifierResolver implements CurrentTenantIdentifierResolver<String> {
 
     @Override
     public String resolveCurrentTenantIdentifier() {
@@ -15,4 +15,5 @@ public class CurrentTenantIdentifierResolverImpl implements CurrentTenantIdentif
     public boolean validateExistingCurrentSessions() {
         return false;
     }
+
 }

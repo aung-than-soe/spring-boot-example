@@ -11,7 +11,7 @@ public class TenantContext implements Serializable {
 
     public static final String TENANT_IDENTIFIER = "X-TenantID";
 
-    public static final String DEFAULT_TENANT = "tenant_a";
+    public static final String DEFAULT_TENANT = "public";
 
     private static final ThreadLocal<String> CURRENT_TENANT = new ThreadLocal<>();
 
